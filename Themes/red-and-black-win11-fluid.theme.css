@@ -1,0 +1,114 @@
+/**
+ * Crimson Fluid Theme (Based on User Video and Requests)
+ * coding_partner_crimson_fluid.css
+ */
+
+:root {
+  /* --- COLOR PALETTE --- */
+  --crimson-accent: #A50000;    /* Deep, rich Crimson for accents */
+  --crimson-dim: #500000;       /* Darker Crimson for hover/background */
+  --fluid-panel-bg: rgba(0, 0, 0, 0.75); /* Translucent dark panels */
+  --red-tint-layer: rgba(100, 0, 0, 0.15); /* Subtle red tint for the background */
+  
+  /* --- UI SETTINGS --- */
+  --fluid-radius: 16px;         /* Heavy rounding, like the video */
+  --fluid-gap: 10px;            /* Spacing between the columns */
+  --glass-blur: blur(12px);     /* High blur for strong glass effect */
+
+  /* --- DISCORD OVERRIDES (Swap Blurple/Default to Crimson) --- */
+  --brand-experiment: var(--crimson-accent);
+  --interactive-active: var(--crimson-accent);
+  --interactive-hover: var(--crimson-accent);
+  --background-primary: transparent;
+  --background-secondary: transparent;
+  --background-tertiary: transparent;
+}
+
+/* 1. GLOBAL BACKGROUND & RED TINT */
+/* Setting a dark background image (Placeholder - Replace with your own image URL!) */
+body {
+  background: url('https://i.imgur.com/3pJ3d.jpg') center/cover no-repeat fixed; 
+}
+
+/* Applying the Red Tint and overall darkness layer */
+#app-mount {
+  /* Dark overall layer */
+  background-color: rgba(0, 0, 0, 0.6); 
+  /* Overlaying the subtle Red Tint */
+  box-shadow: inset 0 0 9999px var(--red-tint-layer); 
+}
+
+
+/* 2. THE FLOATING COLUMNS (The Fluid Structure) */
+
+/* Column 1: Server List (Far Left) */
+nav[class*="guilds"] {
+  background: var(--fluid-panel-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--fluid-radius);
+  margin: var(--fluid-gap) 0 var(--fluid-gap) var(--fluid-gap);
+  height: calc(100% - (var(--fluid-gap) * 2));
+}
+
+/* Column 2: Channel List (Sidebar) */
+div[class*="sidebar"] {
+  background: var(--fluid-panel-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--fluid-radius);
+  margin: var(--fluid-gap) var(--fluid-gap) var(--fluid-gap) var(--fluid-gap);
+  height: calc(100% - (var(--fluid-gap) * 2));
+}
+
+/* Column 3: Main Chat Area */
+div[class*="chatContent"] {
+  background: var(--fluid-panel-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--fluid-radius);
+  margin: var(--fluid-gap);
+  height: calc(100% - (var(--fluid-gap) * 2));
+}
+
+/* Remove margins/backgrounds from wrappers that might interfere */
+div[class*="chat"], div[class*="content"] {
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+
+/* 3. CRIMSON ACCENTS & BORDERS */
+
+/* Top Bar/Header */
+section[class*="title"] {
+  background: transparent !important; /* Keep the top area clear */
+}
+
+/* Selected Channel / Hover */
+div[class*="modeSelected"] a {
+  background: var(--crimson-dim) !important;
+  border-left: 4px solid var(--crimson-accent);
+  color: #fff;
+  border-radius: 0 var(--fluid-radius) var(--fluid-radius) 0;
+}
+
+/* Mention Badge and Highlights (Like the red pills in your video) */
+div[class*="numberBadge"], div[class*="unreadPill"] {
+  background-color: var(--crimson-accent) !important;
+  box-shadow: 0 0 10px var(--crimson-accent);
+}
+
+/* User Activity/Connections Panel (The bottom red bar in your video) */
+/* Targetting known class names for the bottom activity bar or panel, this class can vary. */
+/* If this doesn't work, you'll need to inspect the element to get the exact class! */
+div[class*="activityPanel"] {
+  background-color: var(--crimson-accent) !important;
+  border-radius: var(--fluid-radius);
+  margin: 0 var(--fluid-gap) var(--fluid-gap) var(--fluid-gap);
+  box-shadow: 0 0 20px var(--crimson-accent); /* Added a glow like the video */
+}
+
+/* Text Area (Typing Bar) */
+div[class*="scrollableContainer"] {
+  background: var(--fluid-panel-bg);
+  border: 1px solid var(--crimson-accent);
+  border-radius: 24px; 
+}
