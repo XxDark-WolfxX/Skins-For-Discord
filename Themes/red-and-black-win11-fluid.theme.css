@@ -1,143 +1,148 @@
 /**
- * Crimson Fluid Theme - Optimized for 1366x768 (Member List ON)
- * coding_partner_crimson_fluid_final.css
+ * Dynamic Red Spectrum Fluid Theme - FINAL REVISION
+ * Glassmorphism Fix, Segoe UI Font, and 1366x768 Optimization
  */
 
+/* ======================================================= */
+/* 1. DARK MODE (DEFAULT) - Deep Red Spectrum */
+/* ======================================================= */
 :root {
-  /* --- COLOR PALETTE --- */
-  --crimson-accent: #A50000;    /* Deep, rich Crimson for accents */
-  --crimson-dim: #500000;       /* Darker Crimson for hover/background */
-  --fluid-panel-bg: rgba(0, 0, 0, 0.78); /* Translucent dark panels */
-  --red-tint-layer: rgba(100, 0, 0, 0.15); 
+  /* --- DARK MODE RED SPECTRUM --- */
+  --red-deep-maroon: #600000;
+  --red-crimson: #A50000;
+  --red-ruby: #C60000;
+  --red-accent: #FF3333;
   
-  /* --- UI SETTINGS (ADJUSTED FOR 1366x768) --- */
-  --fluid-radius: 12px;         /* Tighter rounding */
-  --fluid-gap: 8px;             /* Reduced gap to maximize chat area */
-  --glass-blur: blur(10px);     /* Glass effect */
+  --fluid-panel-bg: rgba(0, 0, 0, 0.55); /* Increased transparency for stronger glass effect */
+  --red-tint-layer: rgba(100, 0, 0, 0.15);
+  --text-color: #FFFFFF;
+  
+  /* --- UI SETTINGS --- */
+  --fluid-radius: 12px;
+  --fluid-gap: 8px;
+  --glass-blur: blur(14px); /* Increased blur level for better visibility of effect */
 
-  /* --- DISCORD OVERRIDES --- */
-  --brand-experiment: var(--crimson-accent);
-  --interactive-active: var(--crimson-accent);
-  --interactive-hover: var(--crimson-accent);
+  /* --- FONT SETTING --- */
+  --main-font: "Segoe UI", "Tahoma", "Geneva", sans-serif;
+
+  /* --- DISCORD OVERRIDES (General UI) --- */
+  --brand-experiment: var(--red-accent);
+  --interactive-active: var(--red-accent);
+  --interactive-hover: var(--red-ruby);
+  --header-primary: var(--text-color);
   --background-primary: transparent;
   --background-secondary: transparent;
   --background-tertiary: transparent;
 }
 
-/* 1. GLOBAL BACKGROUND & RED TINT */
-body {
-  /* Placeholder image - Replace with your preferred background URL */
-  background: url('https://i.imgur.com/3pJ3d.jpg') center/cover no-repeat fixed; 
+/* 2. CORE STYLING & GLASSMORPHISM APPLICATION */
+
+/* Apply Segoe UI Font Globally */
+body, 
+div[class*="content"], 
+span, 
+button {
+  font-family: var(--main-font) !important;
 }
 
-/* Applying the Red Tint and overall darkness layer */
+/* Background Setup */
+body {
+  /* Placeholder image - REPLACE WITH YOUR BACKGROUND URL */
+  background: url('https://i.imgur.com/3pJ3d.jpg') center/cover no-repeat fixed; 
+  background-size: cover;
+}
 #app-mount {
   background-color: rgba(0, 0, 0, 0.6); 
   box-shadow: inset 0 0 9999px var(--red-tint-layer); 
 }
 
-/* 2. THE FLOATING COLUMNS (Fluid Structure) */
-
-/* Column 1: Server List */
-nav[class*="guilds"] {
-  background: var(--fluid-panel-bg);
-  backdrop-filter: var(--glass-blur);
-  border-radius: var(--fluid-radius);
-  margin: var(--fluid-gap) 0 var(--fluid-gap) var(--fluid-gap); 
-  height: calc(100% - (var(--fluid-gap) * 2));
-}
-
-/* Column 2: Channel List */
-div[class*="sidebar"] {
-  background: var(--fluid-panel-bg);
-  backdrop-filter: var(--glass-blur);
-  border-radius: var(--fluid-radius);
-  margin: var(--fluid-gap);
-  height: calc(100% - (var(--fluid-gap) * 2));
-}
-
-/* Column 3: Main Chat Area & Content Card */
-div[class*="content"] {
-  padding: var(--fluid-gap);
-  padding-bottom: 0; 
-}
-div[class*="chatContent"] {
-  background: var(--fluid-panel-bg);
-  backdrop-filter: var(--glass-blur);
-  border-radius: var(--fluid-radius);
-  margin: 0; 
-  height: calc(100% - var(--fluid-gap)); 
-}
-
-/* Remove wrappers that interfere */
-div[class*="chat"], div[class*="content"] {
+/* Ensure ALL wrappers are transparent so glass can see wallpaper */
+.app-3xd6d0, .bg-1QIAus, .base-3dtUhz {
   background: transparent !important;
-  margin: 0 !important;
 }
 
-/* 4. MEMBER LIST (RE-ENABLED AND GLASSIFIED) */
-div[class*="container"][class*="membersWrap"] {
-  /* Margin on the right side to create the gap */
-  margin: var(--fluid-gap) var(--fluid-gap) var(--fluid-gap) 0;
-  height: 100%;
-}
-div[class*="members"] {
-  background: var(--fluid-panel-bg);
-  backdrop-filter: var(--glass-blur);
+/* GLASS PANEL STYLING: Apply blur and transparent background to all floating elements */
+nav[class*="guilds"], 
+div[class*="sidebar"], 
+div[class*="chatContent"],
+div[class*="members"],
+div[class*="activityPanel"],
+div[class*="scrollableContainer"] {
+  /* THIS IS THE CRITICAL GLASS LINE */
+  backdrop-filter: var(--glass-blur) !important; 
+  background: var(--fluid-panel-bg) !important;
+
   border-radius: var(--fluid-radius);
-  height: calc(100% - (var(--fluid-gap) * 2));
-  margin: var(--fluid-gap) 0;
+  color: var(--text-color);
+  /* Other structure retained */
+  padding: var(--fluid-gap);
+  box-sizing: border-box;
 }
 
-
-/* 5. CRIMSON SCROLLBARS */
-/* Styling the main scrollbar track (the background) */
-::-webkit-scrollbar-track {
-  background: transparent;
+/* Reset padding on items that shouldn't have it (like the main chat content) */
+div[class*="chatContent"],
+div[class*="members"] {
+  padding: 0;
 }
 
-/* Styling the scrollbar thumb (the movable part) */
-::-webkit-scrollbar-thumb {
-  background-color: var(--crimson-accent) !important;
-  border-radius: 4px;
-  /* Add a subtle glass border for definition */
-  border: 2px solid rgba(255, 255, 255, 0.1); 
+/* CRIMSON ACCENTS AND SCROLLBARS */
+/* (Retained previous logic using spectrum variables) */
+div[class*="activityPanel"] {
+  background-color: var(--red-deep-maroon) !important;
+  box-shadow: 0 0 15px var(--red-deep-maroon);
+  border: 1px solid var(--red-crimson);
+  margin: 0 var(--fluid-gap) var(--fluid-gap) var(--fluid-gap);
+  padding: 8px;
 }
-
-/* Styling the scrollbar width to be slightly thinner */
-::-webkit-scrollbar {
-  width: 8px !important;
-  height: 8px !important;
-}
-
-
-/* 6. CRIMSON ACCENTS */
-
-/* Selected Channel / Hover */
 div[class*="modeSelected"] a {
-  background: var(--crimson-dim) !important;
-  border-left: 4px solid var(--crimson-accent);
-  color: #fff;
+  background: var(--red-ruby) !important;
+  border-left: 4px solid var(--red-accent);
   border-radius: 0 var(--fluid-radius) var(--fluid-radius) 0;
 }
-
-/* Mention Badge and Highlights */
 div[class*="numberBadge"], div[class*="unreadPill"] {
-  background-color: var(--crimson-accent) !important;
-  box-shadow: 0 0 8px var(--crimson-accent);
+  background-color: var(--red-accent) !important;
+  box-shadow: 0 0 8px var(--red-accent);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--red-crimson) !important;
+  border-radius: 4px;
 }
 
-/* User Activity/Connections Panel (Bottom Bar) */
-div[class*="activityPanel"] {
-  background-color: var(--crimson-accent) !important;
-  border-radius: var(--fluid-radius);
-  margin: 0 var(--fluid-gap) var(--fluid-gap) var(--fluid-gap);
-  box-shadow: 0 0 15px var(--crimson-accent); 
-}
+/* ======================================================= */
+/* 3. LIGHT MODE OVERRIDES - Dynamic Palette Shift */
+/* ======================================================= */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* --- LIGHT MODE RED SPECTRUM --- */
+    --red-deep-maroon: #750000;
+    --red-crimson: #B00000;
+    --red-ruby: #FFE3E3;          /* Lighter background for better contrast */
+    --red-accent: #FF3333;
 
-/* Text Area (Typing Bar) */
-div[class*="scrollableContainer"] {
-  background: var(--fluid-panel-bg);
-  border: 1px solid var(--crimson-accent);
-  border-radius: 20px; 
+    --fluid-panel-bg: rgba(255, 255, 255, 0.85); /* White Panels */
+    --red-tint-layer: rgba(255, 0, 0, 0.08); 
+    --text-color: #000000;        /* Black Text */
+    --header-secondary: #5C5C5C;
+  }
+
+  /* Light Mode Background adjustments */
+  body {
+    background-color: #F8F8F8; 
+    background-image: none;
+  }
+  
+  #app-mount {
+    background-color: rgba(255, 255, 255, 0.5); 
+    box-shadow: inset 0 0 9999px var(--red-tint-layer); 
+  }
+  
+  /* Text Area Border */
+  div[class*="scrollableContainer"] {
+    border: 1px solid #C0C0C0 !important;
+  }
+  
+  /* Hover state uses the light background color */
+  div[class*="modeSelected"] a {
+    background: var(--red-ruby) !important;
+  }
 }
