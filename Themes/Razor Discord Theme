@@ -1,0 +1,165 @@
+/* =====================================================
+   RAZER AXON – NEON GREEN (VENCORD)
+   CLEAN BUILD – NO BLUR – NO RED – NO BROAD SELECTORS
+   ===================================================== */
+
+/* -------- HARD COLOR OVERRIDES (KILL OLD THEMES) -------- */
+:root {
+  --red-400: #00ff66 !important;
+  --red-430: #00ff66 !important;
+  --red-460: #00ff66 !important;
+  --red-500: #00ff66 !important;
+
+  --status-danger: #00ff66 !important;
+  --text-danger: #00ff66 !important;
+  --info-danger-foreground: #00ff66 !important;
+  --info-danger-background: rgba(0,255,102,0.25) !important;
+
+  --brand-experiment: #00ff66 !important;
+  --brand-experiment-560: #00ff66 !important;
+  --brand-experiment-600: #00ff66 !important;
+
+  --background-primary: #020403 !important;
+  --background-secondary: #001f12 !important;
+  --background-tertiary: #00150c !important;
+
+  --text-normal: #eafff1 !important;
+  --text-muted: #b6ffd4 !important;
+}
+
+/* -------- GLOBAL RESET -------- */
+* {
+  backdrop-filter: none !important;
+  filter: none !important;
+  animation: none !important;
+  transition: background-color 0.12s linear,
+              color 0.12s linear,
+              box-shadow 0.12s linear !important;
+}
+
+/* -------- APP BACKGROUND -------- */
+#app-mount {
+  background: #020403 !important;
+}
+
+/* -------- GUILD BAR (SERVER ICONS) -------- */
+nav[aria-label="Servers"] {
+  background: #000f08 !important;
+  border-right: 2px solid #00ff66 !important;
+}
+
+/* -------- CHANNEL SIDEBAR (NATIVE) -------- */
+section[aria-label="Channels"] {
+  background: #001f12 !important;
+  width: 190px !important;
+  min-width: 190px !important;
+  max-width: 205px !important;
+  border-right: 2px solid #00ff66 !important;
+}
+
+/* Channel items */
+section[aria-label="Channels"] a {
+  color: #b6ffd4 !important;
+}
+
+/* Hover */
+section[aria-label="Channels"] a:hover {
+  background: rgba(0,255,102,0.25) !important;
+  box-shadow: inset 4px 0 0 #00ff66 !important;
+}
+
+/* Selected channel */
+section[aria-label="Channels"] a[aria-current="page"] {
+  background: #00ff66 !important;
+  color: #001a0d !important;
+  box-shadow: inset 4px 0 0 #b6ffd4,
+              0 0 16px rgba(0,255,102,1) !important;
+}
+
+/* -------- CHAT AREA -------- */
+main[aria-label="Channel content"] {
+  background: linear-gradient(
+    180deg,
+    #003b1f,
+    #001a0d
+  ) !important;
+}
+
+/* Messages */
+div[class^="message"] {
+  color: #eafff1 !important;
+  margin-bottom: 6px !important;
+}
+
+/* Usernames */
+span[class^="username"] {
+  color: #39ff88 !important;
+  text-shadow: 0 0 4px rgba(0,255,102,0.9);
+}
+
+/* -------- MEMBER LIST -------- */
+aside[aria-label="Members"] {
+  background: #00150c !important;
+  width: 220px !important;
+}
+
+/* -------- TEXT INPUT -------- */
+form textarea,
+div[role="textbox"] {
+  background: #000f08 !important;
+  border: 2px solid #00ff66 !important;
+  color: #eafff1 !important;
+  box-shadow: 0 0 16px rgba(0,255,102,0.9) !important;
+}
+
+/* -------- BUTTONS -------- */
+button {
+  background: transparent !important;
+  border: 2px solid #00ff66 !important;
+  color: #00ff66 !important;
+}
+
+button:hover {
+  background: #00ff66 !important;
+  color: #001a0d !important;
+  box-shadow: 0 0 18px rgba(0,255,102,1) !important;
+}
+
+/* -------- UNREAD / MENTIONS -------- */
+span[class^="numberBadge"],
+span[class^="mention"],
+div[aria-label="Unread Messages"] {
+  background: #00ff66 !important;
+  color: #001a0d !important;
+  box-shadow: 0 0 10px rgba(0,255,102,1) !important;
+}
+
+/* Inline @mentions */
+span[data-type="mention"] {
+  background: rgba(0,255,102,0.25) !important;
+  color: #39ff88 !important;
+}
+
+/* -------- TOP BAR -------- */
+header[role="banner"] {
+  background: #000f08 !important;
+  border-bottom: 2px solid #00ff66 !important;
+  height: 48px !important;
+}
+
+/* -------- SCROLLBAR -------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff66 !important;
+  border-radius: 6px;
+}
+
+/* -------- BASE FONT SIZE (768p FRIENDLY) -------- */
+body {
+  font-size: 14px !important;
+}
+/* -------- CUSTOM CSS (ADDITIONAL STYLES) -------- */
+/* Add any additional custom styles here */
